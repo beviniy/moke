@@ -1,0 +1,4 @@
+#requirements for moke
+
+django==1.10.1
+MySQLdb==1.2.3-2.1
