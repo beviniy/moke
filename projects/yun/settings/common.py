@@ -152,3 +152,9 @@ sys.path.insert(1, APP_PATH)
 # Add libs to python path
 LIB_PATH = os.path.join(PROJECT_ROOT, 'libs')
 sys.path.insert(1, LIB_PATH)
+
+RETURN_MSG = {
+    'SUCC': {'code':'10000', 'msg':u'成功'},
+    'ERROR': {'code':'10001', 'msg':u'未知错误'},
+    'PARA_ERR':{'code':'10002', 'msg':u'参数错误'},
+}
