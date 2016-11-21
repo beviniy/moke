@@ -18,6 +18,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
+
+PROJECT_ROOT = os.path.normpath(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
+
+# Add projects to python path
+PROJECT_PATH = os.path.join(PROJECT_ROOT, 'projects')
+sys.path.insert(1, PROJECT_PATH)
+# Add apps to python path
+APP_PATH = os.path.join(PROJECT_ROOT, 'apps')
+sys.path.insert(1, APP_PATH)
+# Add libs to python path
+LIB_PATH = os.path.join(PROJECT_ROOT, 'libs')
+sys.path.insert(1, LIB_PATH)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -47,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'redis_admin',
 ]
 
 MIDDLEWARE = [
@@ -141,20 +155,21 @@ STATIC_URL = '/static/'
 
 
 
-PROJECT_ROOT = os.path.normpath(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
 
-# Add projects to python path
-PROJECT_PATH = os.path.join(PROJECT_ROOT, 'projects')
-sys.path.insert(1, PROJECT_PATH)
-# Add apps to python path
-APP_PATH = os.path.join(PROJECT_ROOT, 'apps')
-sys.path.insert(1, APP_PATH)
-# Add libs to python path
-LIB_PATH = os.path.join(PROJECT_ROOT, 'libs')
-sys.path.insert(1, LIB_PATH)
 
 RETURN_MSG = {
     'SUCC': {'code':'10000', 'msg':u'成功'},
     'ERROR': {'code':'10001', 'msg':u'未知错误'},
     'PARA_ERR':{'code':'10002', 'msg':u'参数错误'},
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "127.0.0.1:6379:1",
+        "OPTIONS": {
+            "PASSWORD": "",
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
 }

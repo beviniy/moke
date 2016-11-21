@@ -6,7 +6,7 @@ Created on 2016-11-21
 
 import re
 import copy
-import json
+import ujson as json
 from django.conf import settings
 from django.http import HttpResponse
 
