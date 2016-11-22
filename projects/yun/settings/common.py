@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'yun.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {
@@ -93,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'yun.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 
 # Database
@@ -155,10 +155,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-
-
-
 RETURN_MSG = {
     'SUCC': {'code':'10000', 'msg':u'成功'},
     'ERROR': {'code':'10001', 'msg':u'未知错误'},
@@ -168,9 +164,9 @@ RETURN_MSG = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "127.0.0.1:6379:1",
+        "LOCATION": "redis://127.0.0.1:6379/1",
         "OPTIONS": {
-            "PASSWORD": "",
+            "PASSWORD": "123456",
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
