@@ -15,11 +15,12 @@ from . import parameters
 from .utils import cache
 # Create your views here.
 
+
 @login_required
 @parameter.checker(parameters.index)
 def index(request):
     # print settings.ADMINS
-    cache.set_test_abc_cache('123',request.GET['a'])
+    cache.set_test_abc_cache('123', request.GET['a'])
     return HttpResponse("Hello World! a = %s" % cache.get_test_abc_cache('123'))
 
 
